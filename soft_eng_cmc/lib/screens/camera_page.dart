@@ -44,53 +44,58 @@ class _CameraPageState extends State<CameraPage> {
                                 topLeft: Radius.circular(20),
                                 topRight: Radius.circular(20))),
                         builder: (context) {
-                          return Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 35, left: 30, right: 30, bottom: 0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "Orange Peels",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/check.png',
-                                            scale: 15,
-                                          ),
-                                          const SizedBox(height: 5),
-                                          const Text(
-                                            "Compostable",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(height: 24),
-                                      const Text(
-                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.black),
-                                      )
-                                    ],
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: CustomPaint(
+                                  child: CustomPaint(
+                                    size: const Size(50, 50),
+                                    painter: LinePainter(),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 0, left: 30, right: 30, bottom: 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Orange Peels",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/check.png',
+                                          scale: 15,
+                                        ),
+                                        const SizedBox(height: 5),
+                                        const Text(
+                                          "Compostable",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(height: 24),
+                                    const Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                      style: TextStyle(
+                                          fontSize: 15, color: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           );
                         });
                   },
@@ -108,5 +113,24 @@ class _CameraPageState extends State<CameraPage> {
         )
       ],
     );
+  }
+}
+
+class LinePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()
+      ..color = const Color.fromARGB(255, 198, 197, 197)
+      ..strokeWidth = 5;
+
+    Offset start = Offset(0, size.height / 2);
+    Offset end = Offset(size.width, size.height / 2);
+
+    canvas.drawLine(start, end, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
