@@ -42,8 +42,7 @@ class _MainScreenState extends State<MainScreen> {
   CameraController? controller;
 
   Future<void> initCamera({required bool frontCamera}) async {
-    controller =
-        CameraController(_cameras[(frontCamera) ? 1 : 0], ResolutionPreset.max);
+    controller = CameraController(_cameras[0], ResolutionPreset.max);
     controller!.initialize().then((_) {
       if (!mounted) {
         return;
@@ -78,22 +77,35 @@ class _MainScreenState extends State<MainScreen> {
     }
     super.dispose();
   }
+  //Slide view page
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     backgroundColor: Colors.transparent,
+  //     body: PageView(
+  //       physics: const BouncingScrollPhysics(),
+  //       controller: PageController(),
+  //       onPageChanged: (int index) {},
+  //       children: <Widget>[
+  //         const HomeScreen(),
+  //         CameraPage(
+  //           cameraController: controller,
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
+  //route view page
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: PageView(
-        physics: const BouncingScrollPhysics(),
-        controller: _pageViewController,
-        onPageChanged: (int index) {},
-        children: <Widget>[
-          const HomeScreen(),
-          CameraPage(
-            cameraController: controller,
-          )
-        ],
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      routes: {
+        "/": (context) => const HomeScreen(),
+        "cameraPage": (context) => CameraPage(cameraController: controller)
+      },
     );
   }
 }

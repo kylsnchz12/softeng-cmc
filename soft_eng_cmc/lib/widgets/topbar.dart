@@ -9,6 +9,11 @@ class TopBar extends StatelessWidget {
     return Stack(
       children: const [
         Positioned(
+            top: 60,
+            left: 30,
+            child: FrostedGlass(
+                w: 60, h: 60, img: "assets/images/back_button.png")),
+        Positioned(
           top: 60,
           right: 30,
           child: FrostedGlass(

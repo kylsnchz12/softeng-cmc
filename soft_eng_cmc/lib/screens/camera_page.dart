@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:soft_eng_cmc/widgets/topbar.dart';
+//import 'package:soft_eng_cmc/widgets/topbar.dart';
 
 import '../widgets/frostedglass.dart';
 
@@ -15,6 +15,8 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -24,8 +26,40 @@ class _CameraPageState extends State<CameraPage> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(12)),
               )
-            : CameraPreview(widget.cameraController!),
-        const TopBar(),
+            : SizedBox(
+                width: screenWidth,
+                height: screenHeight,
+                child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                        width: 100,
+                        child: CameraPreview(widget.cameraController!)))),
+        //const TopBar(),
+        Stack(
+          children: [
+            Positioned(
+              top: 60,
+              left: 30,
+              child: GestureDetector(
+                onTap: () {
+                  dispose();
+                  Navigator.pop(context);
+                },
+                child: const FrostedGlass(
+                    w: 60, h: 60, img: "assets/images/back_button.png"),
+              ),
+            ),
+            const Positioned(
+              top: 60,
+              right: 30,
+              child: FrostedGlass(
+                w: 60.00,
+                h: 60.00,
+                img: 'assets/images/plant.png',
+              ),
+            )
+          ],
+        ),
         Positioned(
           bottom: 40,
           child: Row(
@@ -62,23 +96,28 @@ class _CameraPageState extends State<CameraPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
-                                      "Orange Peels",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(height: 5),
                                     Row(
                                       children: [
                                         Image.asset(
                                           'assets/images/check.png',
-                                          scale: 15,
+                                          scale: 12,
                                         ),
-                                        const SizedBox(height: 5),
+                                        const SizedBox(width: 5),
                                         const Text(
                                           "Compostable",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      children: const [
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "This item is compostable",
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 15,
