@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   camera: ^0.10.3+2
   modal_bottom_sheet: ^2.1.2
+  http: ^0.13.5
+  flutter_easyloading:
 
 dev_dependencies:
   flutter_test:

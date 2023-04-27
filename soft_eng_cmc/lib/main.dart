@@ -42,7 +42,11 @@ class _MainScreenState extends State<MainScreen> {
   CameraController? controller;
 
   Future<void> initCamera({required bool frontCamera}) async {
-    controller = CameraController(_cameras[0], ResolutionPreset.max);
+    controller = CameraController(
+      _cameras[0],
+      ResolutionPreset.max,
+      imageFormatGroup: ImageFormatGroup.yuv420,
+    );
     controller!.initialize().then((_) {
       if (!mounted) {
         return;
@@ -73,10 +77,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void dispose() {
     if (controller != null) {
+      controller!.pausePreview();
       controller!.dispose();
     }
     super.dispose();
   }
+
   //Slide view page
   // @override
   // Widget build(BuildContext context) {
@@ -104,7 +110,9 @@ class _MainScreenState extends State<MainScreen> {
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       routes: {
         "/": (context) => const HomeScreen(),
-        "cameraPage": (context) => CameraPage(cameraController: controller)
+        "cameraPage": (context) => CameraPage(
+              cameraController: controller,
+            )
       },
     );
   }
@@ -127,3 +135,4 @@ class _MainScreenState extends State<MainScreen> {
 //     );
 //   }
 // }
+
