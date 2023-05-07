@@ -24,25 +24,32 @@ class _CameraPageState extends State<CameraPage> {
   XFile? pictureFile;
   String message = '';
   bool resultCall = false;
+  bool _isLoading = false;
+
+  void show() {
+    setState(() {
+      _isLoading = true;
+    });
+  }
+
+  void hide() {
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   Future<String> uploadImage(File imageFile) async {
     var stream = http.ByteStream(imageFile.openRead());
     stream.cast();
     var length = await imageFile.length();
 
-    var uri = Uri.parse('https://aa9c-110-54-231-24.ngrok-free.app/upload');
+    var uri = Uri.parse('https://63a5-110-54-230-32.ngrok-free.app/upload');
     var request = http.MultipartRequest("POST", uri);
     var multipartFile = http.MultipartFile('files', stream, length,
         filename: imageFile.path.split("/").last);
     request.files.add(multipartFile);
 
     var completer = Completer<String>();
-
-    // showDialog(
-    //     context: context,
-    //     builder: ((context) {
-    //       return Center(child: CircularProgressIndicator());
-    //     }));
 
     var response = await request.send();
     if (response.statusCode == 200) {
@@ -51,7 +58,7 @@ class _CameraPageState extends State<CameraPage> {
       print("Error uploading image");
     }
     response.stream.transform(utf8.decoder).listen((value) {
-      // print(value);
+      print(value);
       final decoded = json.decode(value);
       final message = decoded['message'];
 
@@ -65,6 +72,7 @@ class _CameraPageState extends State<CameraPage> {
         completer.complete("Error");
       }
     });
+
     return completer.future;
   }
 
@@ -126,11 +134,18 @@ class _CameraPageState extends State<CameraPage> {
                 padding: const EdgeInsets.only(bottom: 35),
                 child: GestureDetector(
                   onTap: () async {
+                    show();
+                    if (_isLoading) {
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     pictureFile = await widget.cameraController?.takePicture();
 
                     File imageFile = File(pictureFile!.path);
 
                     String result = await uploadImage(imageFile);
+                    hide();
                     print(result);
 
                     if (resultCall == true) {
@@ -193,7 +208,7 @@ class _CameraPageState extends State<CameraPage> {
                                       ),
                                       const SizedBox(height: 24),
                                       const Text(
-                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                        "This item is compostable and can be broken down into nutrient-rich soil through industrial composting facilities. Please dispose of this item in your local industrial composting facility or in your own backyard compost bin to reduce waste and nourish the soil. Note: Do not dispose of this item in your regular trash as it will not break down in a landfill.",
                                         style: TextStyle(
                                             fontSize: 15, color: Colors.black),
                                       )
@@ -238,9 +253,9 @@ class _CameraPageState extends State<CameraPage> {
                                           //   'assets/images/check.png',
                                           //   scale: 12,
                                           // ),
-                                          SizedBox(width: 5),
+                                          // SizedBox(width: 5),
                                           Text(
-                                            "Not Compostable",
+                                            "Non Compostable",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 30,
@@ -263,7 +278,7 @@ class _CameraPageState extends State<CameraPage> {
                                       ),
                                       const SizedBox(height: 24),
                                       const Text(
-                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                        "This item is not compostable and cannot be broken down into nutrient-rich soil. Please dispose of this item in your regular trash. Note: Do not attempt to compost this item in your backyard compost bin or dispose of it in your local industrial composting facility as it may contaminate the composting process and cause harm to the environment.",
                                         style: TextStyle(
                                             fontSize: 15, color: Colors.black),
                                       )
@@ -281,13 +296,13 @@ class _CameraPageState extends State<CameraPage> {
                       img: 'assets/images/camera_button2.png'),
                 ),
               ),
-              if (pictureFile != null)
-                SizedBox(
-                    width: screenWidth,
-                    height: screenHeight,
-                    child: FittedBox(
-                        fit: BoxFit.cover,
-                        child: Image.file(File(pictureFile!.path)))),
+              // if (pictureFile != null)
+              //   SizedBox(
+              //       width: screenWidth,
+              //       height: screenHeight,
+              //       child: FittedBox(
+              //           fit: BoxFit.cover,
+              //           child: Image.file(File(pictureFile!.path)))),
               const SizedBox(width: 37),
               const FrostedGlass(
                   w: 65.00, h: 65.00, img: 'assets/images/setting2.png'),

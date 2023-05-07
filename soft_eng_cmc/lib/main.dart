@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:soft_eng_cmc/screens/camera_page.dart';
 import 'package:soft_eng_cmc/screens/home_screen.dart';
 
+import 'screens/home2.dart';
+
 late List<CameraDescription> _cameras;
 
 List<CameraDescription> getCamera() {
@@ -109,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       routes: {
-        "/": (context) => const HomeScreen(),
+        "/": (context) => const HomeScreenTwo(),
         "cameraPage": (context) => CameraPage(
               cameraController: controller,
             )

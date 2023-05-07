@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "Save planet together",
+                      "EcoScan",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 27,
@@ -49,136 +49,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "News",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset('assets/images/news1.png',
-                                  width: 250, height: 150),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            top: 80,
-                            left: 17,
-                            right: 17,
-                            child: Row(
-                              children: const [
-                                Expanded(
-                                  child: Text(
-                                      "Climate change is exacerbating human-wildlife conflict but solutions await: Study",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                    const SizedBox(width: 7),
-                    Stack(
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset('assets/images/news2.png',
-                                  width: 250, height: 150),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            top: 80,
-                            left: 17,
-                            right: 17,
-                            child: Row(
-                              children: const [
-                                Expanded(
-                                  child: Text(
-                                      "Climate change is exacerbating human-wildlife conflict but solutions await: Study",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                    const SizedBox(width: 7),
-                    Stack(
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset('assets/images/news3.png',
-                                  width: 250, height: 150),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            top: 80,
-                            left: 17,
-                            right: 17,
-                            child: Row(
-                              children: const [
-                                Expanded(
-                                  child: Text(
-                                      "Climate change is exacerbating human-wildlife conflict but solutions await: Study",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                  ],
-                )),
           ),
           const SizedBox(
             height: 17,
@@ -340,17 +210,17 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {},
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset('assets/images/menu_button.png',
-                            width: 60, height: 60),
-                      ),
-                    ),
-                  ),
+                  // Material(
+                  //   color: Colors.transparent,
+                  //   child: InkWell(
+                  //     onTap: () {},
+                  //     child: ClipRRect(
+                  //       borderRadius: BorderRadius.circular(50),
+                  //       child: Image.asset('assets/images/menu_button.png',
+                  //           width: 60, height: 60),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(width: 40),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 18),
@@ -387,17 +257,17 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 40),
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {},
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset('assets/images/setting_button.png',
-                            width: 60, height: 60),
-                      ),
-                    ),
-                  ),
+                  // Material(
+                  //   color: Colors.transparent,
+                  //   child: InkWell(
+                  //     onTap: () {},
+                  //     child: ClipRRect(
+                  //       borderRadius: BorderRadius.circular(50),
+                  //       child: Image.asset('assets/images/setting_button.png',
+                  //           width: 60, height: 60),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
