@@ -39,6 +39,9 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   http: ^0.13.5
   flutter_easyloading:
+  carousel_slider: ^4.2.1
+  progress_dialog: ^1.2.4
+  loading_overlay: ^0.3.0
 
 dev_dependencies:
   flutter_test:

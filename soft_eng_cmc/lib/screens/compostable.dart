@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class HomeScreenTwo extends StatefulWidget {
-  const HomeScreenTwo({super.key});
+class CompostableScreen extends StatefulWidget {
+  const CompostableScreen({super.key});
 
   @override
-  State<HomeScreenTwo> createState() => _HomeScreenTwoState();
+  State<CompostableScreen> createState() => _CompostableScreenState();
 }
 
-class _HomeScreenTwoState extends State<HomeScreenTwo> {
+class _CompostableScreenState extends State<CompostableScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +25,15 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
               ),
             ),
           ),
+          Container(
+              height: 300,
+              width: 415,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/wind.gif"),
+                  fit: BoxFit.cover,
+                ),
+              )),
           Column(
             children: [
               Padding(
@@ -72,14 +81,19 @@ class _HomeScreenTwoState extends State<HomeScreenTwo> {
                 color: const Color(0xFF34a97b),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 65, top: 15),
-                child: Text(
-                  "Great!",
-                  style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255)),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 71, top: 18),
+                  child: Text(
+                    "Great!",
+                    style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
                 ),
               ),
             ),
